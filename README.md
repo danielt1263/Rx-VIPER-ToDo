@@ -21,7 +21,7 @@ The next step is to draw out a [wireframe](https://en.wikipedia.org/wiki/Website
 
 > A side note about naming things. In order to foster communication in a team it's important to be consistent about what things should be called. Naming is hard, but once you pick a name, stick with it. In this writeup I am italicising these important terms.
 
-In our case, we are expecting two screens. We will call them the _List_ and _Add_ screens. In the process of drawing them out, we have identified another user story as well as steps for each. The new story acknoldeges the fact that creating a ToDo is a multistep process from the user's perspective and gives the user the ability to abort the create action.
+In our case, we are expecting two screens. We will call them the _List_ and _Add_ screens. In the process of drawing them out, we have identified another user story as well as steps for each. The new story acknowledges the fact that creating a ToDo is a multistep process from the user's perspective and gives the user the ability to abort the create action.
 
 ```
 (-) As a User, I can create a ToDo.
@@ -42,7 +42,7 @@ In our case, we are expecting two screens. We will call them the _List_ and _Add
 
 ## Order of Work
 
-Now it's time to decide in which order the user stories will be developed. During this process it's importatnt to take into account any dependencies between stories. If you have stories that deal with sub-entities of some entity then they need to come after the stories about the entities. Each story starts on a particular screen so it is often helpful to group stories by the screen they start on. Lastly, it's generally easier to develop stories in CRUD order for a particular entity.
+Now it's time to decide in which order the user stories will be developed. During this process it's important to take into account any dependencies between stories. If you have stories that deal with sub-entities of some entity then they need to come after the stories about the entities. Each story starts on a particular screen so it is often helpful to group stories by the screen they start on. Lastly, it's generally easier to develop stories in CRUD order for a particular entity.
 
 The process of developing a user story isn't just about writing code, each screen also needs a detail-design and decisions need to be made about application wide fonts and colors. All of this can generally be done in parallel; however, it's best if the detail design of a screen comes before development so that code doesn't have to be revisited.
 
@@ -54,13 +54,13 @@ For this sample app, I have already ordered the user stories in the list above a
 
 We have a solid understanding now of what the user can do and we know what order we are going to develop those features in. We also have detail designs for the screens needed (at least for the first user story) and a list of fonts and colors that will be used throughout the app. Now it's time to start development.
 
-> Before talking about how to adapt VIPER to Rx, I want to clear up a misconseption about the architecture. Some people assume that there must be a VIPER (View, Interactor, Presenter, Wireframe) stack for every screen, but that is not at all true. Sometimes a single screen might be involved in multiple user stories at the same time and so will have several interactors. Sometimes a screen might be used for several different stories and have multiple Wireframes and Presenters associated with it. Lastly, sometimes multiple screens might be involved in a single user story and then one Wireframe will display several screens.
+> Before talking about how to adapt VIPER to Rx, I want to clear up a misconception about the architecture. Some people assume that there must be a VIPER (View, Interactor, Presenter, Wireframe) stack for every screen, but that is not at all true. Sometimes a single screen might be involved in multiple user stories at the same time and so will have several interactors. Sometimes a screen might be used for several different stories and have multiple Wireframes and Presenters associated with it. Lastly, sometimes multiple screens might be involved in a single user story and then one Wireframe will display several screens.
 
 ### Story 1, Step 1: Tap the add button to display the _Add_ screen.
 
-In this commit, I am implementing the first step of the first user story, "Tap the add button to display the _Add_ screen." Of course a lot has to be done for this simiple step because in order to tap that add buttton, we need an application. Since the user story starts on the _List_ screen, we need to create that as well, but only in so far as to give it an add button. Notice I haven't fleshed out the rest of the screen. I went ahead and laid out the entire _Add_ screen since I know I need it for the rest of this story. Also, since this is the step that displays the _Add_ screen and the detail-design calls for a special presentation animation I did that here.
+In this commit, I am implementing the first step of the first user story, "Tap the add button to display the _Add_ screen." Of course a lot has to be done for this simple step because in order to tap that add button, we need an application. Since the user story starts on the _List_ screen, we need to create that as well, but only in so far as to give it an add button. Notice I haven't fleshed out the rest of the screen. I went ahead and laid out the entire _Add_ screen since I know I need it for the rest of this story. Also, since this is the step that displays the _Add_ screen and the detail-design calls for a special presentation animation I did that here.
 
-With the original conception of VIPER, each comonent was a class with several functions. In Rx things are a bit different. Here each component tends to be a single function. So I have the files named based on the component they represent, but each file only contains a single exposed function and possibly some private helper functions.
+With the original conception of VIPER, each component was a class with several functions. In Rx things are a bit different. Here each component tends to be a single function. So I have the files named based on the component they represent, but each file only contains a single exposed function and possibly some private helper functions.
 
 When the app starts up, the flow is as follows:
 
@@ -74,3 +74,9 @@ When the user taps the add button, the flow is as follows:
 2. The list presenter maps that to an add ListAction and emits that to the wireframe.
 3. The list wireframe catches the add action and calls displayAdd which is in the AddWireframe.swift file.
 4. The add wireframe instantiates the add view controller and presents it.
+
+### Story 1, Step 2: Enter a title and date of a ToDo (both are required.)
+
+Much of the functionality of this commit was actually added in the last commit since I laid out the _Add_ screen. However, to help ensure the stipulation that both title and date are required for saving, this is a good time to make sure the save button is only enabled if there is valid input. This is our first real bit of logic so I went ahead and added tests. Tests aren't often added to sample code so I thought it would be a nice touch.
+
+You will see that the logic is all in the presenters so that's what is tested. In a properly constructed VIPER system, all of the logic will be in the presenters and interactors. I expect to have a test case for each user story.

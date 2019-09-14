@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72774227232D59BE0051E070 /* AddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774226232D59BE0051E070 /* AddPresenter.swift */; };
+		72774229232D740C0051E070 /* AddToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774228232D740C0051E070 /* AddToDoTests.swift */; };
 		7290A7B7232C6CB7002487E2 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7290A7B6232C6CB7002487E2 /* AddViewController.swift */; };
 		7290A7B9232C96ED002487E2 /* AddTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7290A7B8232C96EC002487E2 /* AddTransitioning.swift */; };
 		72E136CC232B218200A2DE8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E136CB232B218200A2DE8C /* AppDelegate.swift */; };
 		72E136D1232B218200A2DE8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72E136CF232B218200A2DE8C /* Main.storyboard */; };
 		72E136D3232B219200A2DE8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72E136D2232B219200A2DE8C /* Assets.xcassets */; };
 		72E136D6232B219200A2DE8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72E136D4232B219200A2DE8C /* LaunchScreen.storyboard */; };
-		72E136E1232B219300A2DE8C /* Rx_VIPER_ToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E136E0232B219300A2DE8C /* Rx_VIPER_ToDoTests.swift */; };
 		72E136EE232B327200A2DE8C /* ListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E136ED232B327200A2DE8C /* ListWireframe.swift */; };
 		72E136F0232B32DE00A2DE8C /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E136EF232B32DE00A2DE8C /* ListViewController.swift */; };
 		72E136F2232B334800A2DE8C /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E136F1232B334800A2DE8C /* ListPresenter.swift */; };
@@ -40,6 +41,8 @@
 		549CF6948559CA17EF97EEDC /* Pods-Rx-VIPER-ToDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rx-VIPER-ToDoTests.debug.xcconfig"; path = "Target Support Files/Pods-Rx-VIPER-ToDoTests/Pods-Rx-VIPER-ToDoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		660F5550352429A6BA823038 /* Pods_Rx_VIPER_ToDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rx_VIPER_ToDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CDDEE3520DAA365E3A05D56 /* Pods-Rx-VIPER-ToDoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rx-VIPER-ToDoTests.release.xcconfig"; path = "Target Support Files/Pods-Rx-VIPER-ToDoTests/Pods-Rx-VIPER-ToDoTests.release.xcconfig"; sourceTree = "<group>"; };
+		72774226232D59BE0051E070 /* AddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresenter.swift; sourceTree = "<group>"; };
+		72774228232D740C0051E070 /* AddToDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoTests.swift; sourceTree = "<group>"; };
 		7290A7B6232C6CB7002487E2 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		7290A7B8232C96EC002487E2 /* AddTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransitioning.swift; sourceTree = "<group>"; };
 		72E136C8232B218200A2DE8C /* Rx-VIPER-ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rx-VIPER-ToDo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,7 +52,6 @@
 		72E136D5232B219200A2DE8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72E136D7232B219200A2DE8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72E136DC232B219300A2DE8C /* Rx-VIPER-ToDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rx-VIPER-ToDoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		72E136E0232B219300A2DE8C /* Rx_VIPER_ToDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rx_VIPER_ToDoTests.swift; sourceTree = "<group>"; };
 		72E136E2232B219300A2DE8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72E136ED232B327200A2DE8C /* ListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWireframe.swift; sourceTree = "<group>"; };
 		72E136EF232B32DE00A2DE8C /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -115,7 +117,7 @@
 		72E136DF232B219300A2DE8C /* Rx-VIPER-ToDoTests */ = {
 			isa = PBXGroup;
 			children = (
-				72E136E0232B219300A2DE8C /* Rx_VIPER_ToDoTests.swift */,
+				72774228232D740C0051E070 /* AddToDoTests.swift */,
 				72E136E2232B219300A2DE8C /* Info.plist */,
 			);
 			path = "Rx-VIPER-ToDoTests";
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				72E136F7232B37B200A2DE8C /* AddWireframe.swift */,
+				72774226232D59BE0051E070 /* AddPresenter.swift */,
 				7290A7B6232C6CB7002487E2 /* AddViewController.swift */,
 				7290A7B8232C96EC002487E2 /* AddTransitioning.swift */,
 			);
@@ -364,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72774227232D59BE0051E070 /* AddPresenter.swift in Sources */,
 				72E136EE232B327200A2DE8C /* ListWireframe.swift in Sources */,
 				72E136CC232B218200A2DE8C /* AppDelegate.swift in Sources */,
 				7290A7B7232C6CB7002487E2 /* AddViewController.swift in Sources */,
@@ -379,7 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72E136E1232B219300A2DE8C /* Rx_VIPER_ToDoTests.swift in Sources */,
+				72774229232D740C0051E070 /* AddToDoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

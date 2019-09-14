@@ -10,8 +10,18 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class AddViewController: UIViewController {
+final class AddViewController: UIViewController, HasPresenter {
 
+	struct Input {
+		let title: Observable<String>
+		let date: Observable<Date>
+	}
+
+	struct Output {
+		let minimumDate: Date
+		let saveEnabled: Observable<Bool>
+	}
+	
 	@IBOutlet weak var topConstraint: NSLayoutConstraint!
 	@IBOutlet weak var blurView: UIVisualEffectView!
 	@IBOutlet weak var dialogView: UIView!
@@ -19,15 +29,28 @@ final class AddViewController: UIViewController {
 	@IBOutlet weak var saveButtonItem: UIBarButtonItem!
 	@IBOutlet weak var nameField: UITextField!
 	@IBOutlet weak var datePicker: UIDatePicker!
-	
+
+	var buildOutput: (Input) -> Output = { _ in fatalError() }
+
+	private let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
+		let input = Input(
+			title: nameField.rx.text.orEmpty.asObservable(),
+			date: datePicker.rx.date.asObservable()
+		)
+		let output = buildOutput(input)
+		datePicker.minimumDate = output.minimumDate
+		output.saveEnabled
+			.bind(to: saveButtonItem.rx.isEnabled)
+			.disposed(by: disposeBag)
 
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		nameField.becomeFirstResponder()
-	}
+		rx.methodInvoked(#selector(viewDidAppear(_:)))
+			.bind(onNext: { [nameField] _ in
+				nameField?.becomeFirstResponder()
+			})
+			.disposed(by: disposeBag)
+    }
 }
