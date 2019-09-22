@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7239881B2337097C0001602A /* ErrorAlertWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7239881A2337097C0001602A /* ErrorAlertWireframe.swift */; };
+		726641FC2331BB9900CC0BE1 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726641FB2331BB9900CC0BE1 /* Todo.swift */; };
+		726641FF2331C1B500CC0BE1 /* AddInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726641FE2331C1B500CC0BE1 /* AddInteractor.swift */; };
 		72774227232D59BE0051E070 /* AddPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774226232D59BE0051E070 /* AddPresenter.swift */; };
 		72774229232D740C0051E070 /* AddToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72774228232D740C0051E070 /* AddToDoTests.swift */; };
 		7290A7B7232C6CB7002487E2 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7290A7B6232C6CB7002487E2 /* AddViewController.swift */; };
 		7290A7B9232C96ED002487E2 /* AddTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7290A7B8232C96EC002487E2 /* AddTransitioning.swift */; };
+		72B6E1D92330FCC100A65B9A /* PropertyListDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6E1D82330FCC100A65B9A /* PropertyListDataStore.swift */; };
 		72E136CC232B218200A2DE8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E136CB232B218200A2DE8C /* AppDelegate.swift */; };
 		72E136D1232B218200A2DE8C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72E136CF232B218200A2DE8C /* Main.storyboard */; };
 		72E136D3232B219200A2DE8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72E136D2232B219200A2DE8C /* Assets.xcassets */; };
@@ -20,6 +24,8 @@
 		72E136F2232B334800A2DE8C /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E136F1232B334800A2DE8C /* ListPresenter.swift */; };
 		72E136F5232B350300A2DE8C /* HasPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E136F4232B350300A2DE8C /* HasPresenter.swift */; };
 		72E136F8232B37B200A2DE8C /* AddWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E136F7232B37B200A2DE8C /* AddWireframe.swift */; };
+		72F7B649232E6ED600B59FFB /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F7B648232E6ED600B59FFB /* Identifier.swift */; };
+		72F7B652232E7B2600B59FFB /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F7B651232E7B2600B59FFB /* DataStore.swift */; };
 		AAD75AFC1DB8931A6A24767C /* Pods_Rx_VIPER_ToDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 660F5550352429A6BA823038 /* Pods_Rx_VIPER_ToDo.framework */; };
 		DB682176000ED9AEBC6C1EF8 /* Pods_Rx_VIPER_ToDoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43FA46F73D5FB555A2F6807C /* Pods_Rx_VIPER_ToDoTests.framework */; };
 /* End PBXBuildFile section */
@@ -41,10 +47,14 @@
 		549CF6948559CA17EF97EEDC /* Pods-Rx-VIPER-ToDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rx-VIPER-ToDoTests.debug.xcconfig"; path = "Target Support Files/Pods-Rx-VIPER-ToDoTests/Pods-Rx-VIPER-ToDoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		660F5550352429A6BA823038 /* Pods_Rx_VIPER_ToDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rx_VIPER_ToDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CDDEE3520DAA365E3A05D56 /* Pods-Rx-VIPER-ToDoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rx-VIPER-ToDoTests.release.xcconfig"; path = "Target Support Files/Pods-Rx-VIPER-ToDoTests/Pods-Rx-VIPER-ToDoTests.release.xcconfig"; sourceTree = "<group>"; };
+		7239881A2337097C0001602A /* ErrorAlertWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertWireframe.swift; sourceTree = "<group>"; };
+		726641FB2331BB9900CC0BE1 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		726641FE2331C1B500CC0BE1 /* AddInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInteractor.swift; sourceTree = "<group>"; };
 		72774226232D59BE0051E070 /* AddPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresenter.swift; sourceTree = "<group>"; };
 		72774228232D740C0051E070 /* AddToDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoTests.swift; sourceTree = "<group>"; };
 		7290A7B6232C6CB7002487E2 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		7290A7B8232C96EC002487E2 /* AddTransitioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransitioning.swift; sourceTree = "<group>"; };
+		72B6E1D82330FCC100A65B9A /* PropertyListDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListDataStore.swift; sourceTree = "<group>"; };
 		72E136C8232B218200A2DE8C /* Rx-VIPER-ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rx-VIPER-ToDo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		72E136CB232B218200A2DE8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		72E136D0232B218200A2DE8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +68,8 @@
 		72E136F1232B334800A2DE8C /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		72E136F4232B350300A2DE8C /* HasPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasPresenter.swift; sourceTree = "<group>"; };
 		72E136F7232B37B200A2DE8C /* AddWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWireframe.swift; sourceTree = "<group>"; };
+		72F7B648232E6ED600B59FFB /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
+		72F7B651232E7B2600B59FFB /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +92,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72398819233709560001602A /* Error Alert */ = {
+			isa = PBXGroup;
+			children = (
+				7239881A2337097C0001602A /* ErrorAlertWireframe.swift */,
+			);
+			path = "Error Alert";
+			sourceTree = "<group>";
+		};
+		726641FD2331C19900CC0BE1 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				726641FE2331C1B500CC0BE1 /* AddInteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
 		72E136BF232B218100A2DE8C = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				72E136CB232B218200A2DE8C /* AppDelegate.swift */,
+				72F7B645232E6E9300B59FFB /* Entities */,
+				72F7B63F232E650900B59FFB /* Store */,
+				726641FD2331C19900CC0BE1 /* Interactors */,
 				72E136EB232B320A00A2DE8C /* Modules */,
 				72E136F3232B34E600A2DE8C /* Utilities */,
 				72E136CF232B218200A2DE8C /* Main.storyboard */,
@@ -126,6 +157,7 @@
 		72E136EB232B320A00A2DE8C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				72398819233709560001602A /* Error Alert */,
 				72E136F6232B37A100A2DE8C /* Add */,
 				72E136EC232B324700A2DE8C /* List */,
 			);
@@ -159,6 +191,32 @@
 				7290A7B8232C96EC002487E2 /* AddTransitioning.swift */,
 			);
 			path = Add;
+			sourceTree = "<group>";
+		};
+		72F7B63F232E650900B59FFB /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				72F7B651232E7B2600B59FFB /* DataStore.swift */,
+				72F7B650232E7AFF00B59FFB /* PropertyList DataStore */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		72F7B645232E6E9300B59FFB /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				726641FB2331BB9900CC0BE1 /* Todo.swift */,
+				72F7B648232E6ED600B59FFB /* Identifier.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		72F7B650232E7AFF00B59FFB /* PropertyList DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				72B6E1D82330FCC100A65B9A /* PropertyListDataStore.swift */,
+			);
+			path = "PropertyList DataStore";
 			sourceTree = "<group>";
 		};
 		77044686FB4E667A6C36A976 /* Pods */ = {
@@ -367,14 +425,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72B6E1D92330FCC100A65B9A /* PropertyListDataStore.swift in Sources */,
 				72774227232D59BE0051E070 /* AddPresenter.swift in Sources */,
 				72E136EE232B327200A2DE8C /* ListWireframe.swift in Sources */,
 				72E136CC232B218200A2DE8C /* AppDelegate.swift in Sources */,
+				7239881B2337097C0001602A /* ErrorAlertWireframe.swift in Sources */,
+				72F7B649232E6ED600B59FFB /* Identifier.swift in Sources */,
 				7290A7B7232C6CB7002487E2 /* AddViewController.swift in Sources */,
 				7290A7B9232C96ED002487E2 /* AddTransitioning.swift in Sources */,
 				72E136F8232B37B200A2DE8C /* AddWireframe.swift in Sources */,
+				726641FF2331C1B500CC0BE1 /* AddInteractor.swift in Sources */,
 				72E136F2232B334800A2DE8C /* ListPresenter.swift in Sources */,
 				72E136F5232B350300A2DE8C /* HasPresenter.swift in Sources */,
+				72F7B652232E7B2600B59FFB /* DataStore.swift in Sources */,
+				726641FC2331BB9900CC0BE1 /* Todo.swift in Sources */,
 				72E136F0232B32DE00A2DE8C /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,6 +605,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XA4HQLH76F;
 				INFOPLIST_FILE = "Rx-VIPER-ToDo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -548,7 +613,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.danielt1263.Rx-VIPER-ToDo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -560,6 +625,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XA4HQLH76F;
 				INFOPLIST_FILE = "Rx-VIPER-ToDo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -567,7 +633,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.danielt1263.Rx-VIPER-ToDo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

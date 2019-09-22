@@ -15,6 +15,7 @@ final class AddViewController: UIViewController, HasPresenter {
 	struct Input {
 		let title: Observable<String>
 		let date: Observable<Date>
+		let save: Observable<Void>
 	}
 
 	struct Output {
@@ -39,7 +40,8 @@ final class AddViewController: UIViewController, HasPresenter {
 
 		let input = Input(
 			title: nameField.rx.text.orEmpty.asObservable(),
-			date: datePicker.rx.date.asObservable()
+			date: datePicker.rx.date.asObservable(),
+			save: saveButtonItem.rx.tap.asObservable()
 		)
 		let output = buildOutput(input)
 		datePicker.minimumDate = output.minimumDate

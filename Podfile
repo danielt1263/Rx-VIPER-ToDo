@@ -1,4 +1,4 @@
-platform :ios, '12.4'
+platform :ios, '11.4'
 
 target 'Rx-VIPER-ToDo' do
   use_frameworks!

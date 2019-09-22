@@ -15,7 +15,18 @@ func displayAdd(on parent: UIViewController) {
 	let controller = storyboard.instantiateViewController(withIdentifier: "Add") as! AddViewController
 	controller.modalPresentationStyle = .custom
 	controller.transitioningDelegate = transitioningDelegate
-	controller.installPresenter(presenter: addEventHandler(minimumDate: Date()))
+	_ = controller.installPresenter(presenter: addEventHandler(
+		minimumDate: Date(),
+		addInteractor: saveTodo(dataStore: defaultDataStore)
+	))
+		.bind(onNext: { [unowned parent, unowned controller] action in
+			switch action {
+			case .success:
+				parent.dismiss(animated: true, completion: nil)
+			case .failure(let error):
+				displayErrorAlert(error: error, on: controller)
+			}
+		})
 	parent.present(controller, animated: true, completion: nil)
 }
 

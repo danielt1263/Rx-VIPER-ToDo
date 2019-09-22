@@ -20,3 +20,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 }
 
+let defaultDataStore = PropertyListDataStore()
