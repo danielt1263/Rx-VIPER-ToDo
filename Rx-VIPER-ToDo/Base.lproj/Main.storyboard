@@ -225,7 +225,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TS7-ig-POT"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="260" height="360"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="blurView" destination="zpF-nZ-8Jl" id="Nwa-nU-yMd"/>

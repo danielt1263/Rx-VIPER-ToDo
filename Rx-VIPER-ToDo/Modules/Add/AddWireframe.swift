@@ -21,7 +21,7 @@ func displayAdd(on parent: UIViewController) {
 	))
 		.bind(onNext: { [unowned parent, unowned controller] action in
 			switch action {
-			case .success:
+			case .success, .cancel:
 				parent.dismiss(animated: true, completion: nil)
 			case .failure(let error):
 				displayErrorAlert(error: error, on: controller)

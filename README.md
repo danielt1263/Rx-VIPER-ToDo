@@ -106,3 +106,7 @@ One of the defining features of VIPER is that _only_ Interactors work with Entie
 You will notice that the presenter doesn't create a Todo object, instead it just passes enough information to the Interactor for _it_ to create the Todo object which then passes it to the DataStore. Then the DataStore converts the Todo object into a form that is savable and saves it.
 
 It's interesting to note that up to this point, our code has been indistiguishable from an MVVM-C architecture (other than the names of things.) VIPER adds an extra level of indirection between the interactor (view model) and the entities/data store. In MVVM-C, the view model works directly with them both. Personally, I'm not sure if this extra level of indirection is useful. Even in an application this small, I'm left wondering where I should change the date of the object to the `startOfDay`? Should it be done in the presenter or in the interactor?
+
+### Story 2, Step 1: Tap cancel button to dismiss Add screen without saving.
+
+Since the screen and button for this story have already been layed out, it's just a matter of hooking them up. We add the cancel button to the UI's input, and then bind it directly to the wireframe's Observable.

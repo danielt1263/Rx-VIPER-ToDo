@@ -11,6 +11,7 @@ import RxSwift
 
 enum AddAction {
 	case success
+	case cancel
 	case failure(Error)
 }
 
@@ -32,7 +33,8 @@ func addEventHandler(minimumDate: Date, addInteractor: @escaping AddInteractor) 
 			),
 			Observable.merge(
 				savedTodo.compactMap { $0.element }.map { AddAction.success },
-				savedTodo.compactMap { $0.error }.map { AddAction.failure($0) }
+				savedTodo.compactMap { $0.error }.map { AddAction.failure($0) },
+				input.cancel.map { AddAction.cancel }
 			)
 		)
 	}
