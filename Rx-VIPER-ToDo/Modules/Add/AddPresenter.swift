@@ -9,12 +9,6 @@
 import Foundation
 import RxSwift
 
-enum AddAction {
-	case success
-	case cancel
-	case failure(Error)
-}
-
 func addEventHandler(minimumDate: Date, addInteractor: @escaping AddInteractor) -> (AddViewController.Input) -> (AddViewController.Output, Observable<AddAction>) {
 	return { input in
 		let proposedTodo = Observable.combineLatest(input.title, input.date) { (title: $0, date: $1) }
@@ -23,7 +17,7 @@ func addEventHandler(minimumDate: Date, addInteractor: @escaping AddInteractor) 
 			.distinctUntilChanged()
 		let savedTodo = input.save
 			.withLatestFrom(proposedTodo)
-			.flatMapLatest { addInteractor($0.title, $0.date) }
+			.flatMapLatest { addInteractor($0.title, $0.date).materialize() }
 			.share()
 
 		return (

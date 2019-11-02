@@ -9,15 +9,78 @@
 import Foundation
 import RxSwift
 
-enum ListAction {
-	case add
-}
-
-func listEventHandler() -> (ListViewController.Input) -> (ListViewController.Output, Observable<ListAction>) {
+func listEventHandler(updated: Observable<Date>, interactor: @escaping ListInteractor) -> (ListViewController.Input) -> (ListViewController.Output, Observable<ListAction>) {
 	return { input in
+
+		let upcomingItemsResult = Observable.merge(input.refresh, updated)
+			.flatMapLatest { interactor($0).materialize() }
+
+		let displaySections = upcomingItemsResult
+			.compactMap { $0.element }
+			.map { upcomingItems in
+				return upcomingItems.reduce(into: [UpcomingDisplaySection]()) { result, item in
+					let displayItem = UpcomingDisplayItem(item)
+					if let index = result.firstIndex(where: { $0.model == item.dateRelation.section }) {
+						result[index].items.append(displayItem)
+					}
+					else {
+						result.append(UpcomingDisplaySection(model: item.dateRelation.section, items: [displayItem]))
+					}
+				}
+			}
+
 		return (
-			ListViewController.Output(),
-			input.add.map { ListAction.add }
+			ListViewController.Output(
+				isRefreshing: upcomingItemsResult.map { _ in false },
+				displaySections: displaySections,
+				backgroundViewHidden: displaySections.map { !$0.isEmpty }
+				),
+			.merge(
+				input.add.map { ListAction.add },
+				upcomingItemsResult.compactMap { $0.error }.map { ListAction.error($0) }
+			)
 		)
 	}
 }
+
+struct UpcomingItem {
+	let dateRelation: NearTermDateRelation
+	let dueDate: Date
+	let title: String
+}
+
+enum NearTermDateRelation {
+	case outOfRange
+	case today
+	case tomorrow
+	case laterThisWeek
+	case nextWeek
+
+	var section: Section {
+		switch self {
+			case .outOfRange:
+				return Section(name: "OUT OF RANGE", imageName: "paper")
+			case .today:
+				return Section(name: "TODAY", imageName: "check")
+			case .tomorrow:
+				return Section(name: "TOMORROW", imageName: "alarm")
+			case .laterThisWeek:
+				return Section(name: "THIS WEEK", imageName: "circle")
+			case .nextWeek:
+				return Section(name: "NEXT WEEK", imageName: "calendar")
+		}
+	}
+}
+
+extension UpcomingDisplayItem {
+	init(_ item: UpcomingItem) {
+		title = item.title
+		dueDay = item.dateRelation == .today ? "" : dayFormatter.string(from: item.dueDate)
+	}
+}
+
+let dayFormatter: DateFormatter = {
+	let result = DateFormatter()
+	result.dateFormat = DateFormatter.dateFormat(fromTemplate: "EEEE", options: 0, locale: nil)
+	return result
+}()

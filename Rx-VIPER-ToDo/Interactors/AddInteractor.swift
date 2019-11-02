@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-typealias AddInteractor = (_ title: String, _ date: Date) -> Observable<Event<Void>>
+typealias AddInteractor = (_ title: String, _ date: Date) -> Observable<Void>
 
 func saveTodo(dataStore: DataStore) -> AddInteractor {
 	return { title, date in
@@ -17,6 +17,5 @@ func saveTodo(dataStore: DataStore) -> AddInteractor {
 		let calendar = Calendar.current
 		let todo = Todo(id: Identifier<Todo>(), title: title, date: calendar.startOfDay(for: date))
 		return dataStore.createTodo(todo)
-			.materialize()
 	}
 }

@@ -10,15 +10,18 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-func displayAdd(on parent: UIViewController) {
+func displayAdd(on parent: UIViewController) -> Observable<Void> {
 	let storyboard = UIStoryboard(name: "Main", bundle: nil)
 	let controller = storyboard.instantiateViewController(withIdentifier: "Add") as! AddViewController
 	controller.modalPresentationStyle = .custom
 	controller.transitioningDelegate = transitioningDelegate
-	_ = controller.installPresenter(presenter: addEventHandler(
+	let action = controller.installPresenter(presenter: addEventHandler(
 		minimumDate: Date(),
 		addInteractor: saveTodo(dataStore: defaultDataStore)
 	))
+	.share()
+
+	_ = action
 		.bind(onNext: { [unowned parent, unowned controller] action in
 			switch action {
 			case .success, .cancel:
@@ -28,6 +31,18 @@ func displayAdd(on parent: UIViewController) {
 			}
 		})
 	parent.present(controller, animated: true, completion: nil)
+	return action.filter { $0.isSuccess }.map { _ in }
 }
 
 let transitioningDelegate = AddTransitioningDelegate()
+
+enum AddAction {
+	case success
+	case cancel
+	case failure(Error)
+
+	var isSuccess: Bool {
+		if case .success = self { return true }
+		else { return false }
+	}
+}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		719B57BB236DD8C20008856C /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B57BA236DD8C20008856C /* ListInteractor.swift */; };
 		7239881B2337097C0001602A /* ErrorAlertWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7239881A2337097C0001602A /* ErrorAlertWireframe.swift */; };
 		726641FC2331BB9900CC0BE1 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726641FB2331BB9900CC0BE1 /* Todo.swift */; };
 		726641FF2331C1B500CC0BE1 /* AddInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726641FE2331C1B500CC0BE1 /* AddInteractor.swift */; };
@@ -47,6 +48,7 @@
 		549CF6948559CA17EF97EEDC /* Pods-Rx-VIPER-ToDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rx-VIPER-ToDoTests.debug.xcconfig"; path = "Target Support Files/Pods-Rx-VIPER-ToDoTests/Pods-Rx-VIPER-ToDoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		660F5550352429A6BA823038 /* Pods_Rx_VIPER_ToDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rx_VIPER_ToDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CDDEE3520DAA365E3A05D56 /* Pods-Rx-VIPER-ToDoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rx-VIPER-ToDoTests.release.xcconfig"; path = "Target Support Files/Pods-Rx-VIPER-ToDoTests/Pods-Rx-VIPER-ToDoTests.release.xcconfig"; sourceTree = "<group>"; };
+		719B57BA236DD8C20008856C /* ListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
 		7239881A2337097C0001602A /* ErrorAlertWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertWireframe.swift; sourceTree = "<group>"; };
 		726641FB2331BB9900CC0BE1 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		726641FE2331C1B500CC0BE1 /* AddInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInteractor.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				726641FE2331C1B500CC0BE1 /* AddInteractor.swift */,
+				719B57BA236DD8C20008856C /* ListInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				72E136CC232B218200A2DE8C /* AppDelegate.swift in Sources */,
 				7239881B2337097C0001602A /* ErrorAlertWireframe.swift in Sources */,
 				72F7B649232E6ED600B59FFB /* Identifier.swift in Sources */,
+				719B57BB236DD8C20008856C /* ListInteractor.swift in Sources */,
 				7290A7B7232C6CB7002487E2 /* AddViewController.swift in Sources */,
 				7290A7B9232C96ED002487E2 /* AddTransitioning.swift in Sources */,
 				72E136F8232B37B200A2DE8C /* AddWireframe.swift in Sources */,

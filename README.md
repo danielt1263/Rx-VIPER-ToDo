@@ -101,12 +101,25 @@ For this step, we created our first interactor. We have also discovered a path n
     Error: If the save fails, instead of dismissing the ToDo screen, an Alert screen displays explaining the error.
 ```
 
-One of the defining features of VIPER is that _only_ Interactors work with Enties and the DataStore, the Wireframe injects the DataStore into the Interactor, and the Presenter knows nothing about the DataStore _or_ the Entities. 
+One of the defining features of VIPER is that _only_ Interactors work with Entities and the DataStore, the Wireframe injects the DataStore into the Interactor, and the Presenter knows nothing about the DataStore _or_ the Entities. 
 
 You will notice that the presenter doesn't create a Todo object, instead it just passes enough information to the Interactor for _it_ to create the Todo object which then passes it to the DataStore. Then the DataStore converts the Todo object into a form that is savable and saves it.
 
-It's interesting to note that up to this point, our code has been indistiguishable from an MVVM-C architecture (other than the names of things.) VIPER adds an extra level of indirection between the interactor (view model) and the entities/data store. In MVVM-C, the view model works directly with them both. Personally, I'm not sure if this extra level of indirection is useful. Even in an application this small, I'm left wondering where I should change the date of the object to the `startOfDay`? Should it be done in the presenter or in the interactor?
+It's interesting to note that up to this point, our code has been indistinguishable from an MVVM-C architecture (other than the names of things.) VIPER adds an extra level of indirection between the interactor (view model) and the entities/data store. In MVVM-C, the view model works directly with them both. Personally, I'm not sure if this extra level of indirection is useful. Even in an application this small, I'm left wondering where I should change the date of the object to the `startOfDay`? Should it be done in the presenter or in the interactor?
 
 ### Story 2, Step 1: Tap cancel button to dismiss Add screen without saving.
 
-Since the screen and button for this story have already been layed out, it's just a matter of hooking them up. We add the cancel button to the UI's input, and then bind it directly to the wireframe's Observable.
+Since the screen and button for this story have already been laid out, it's just a matter of hooking them up. We add the cancel button to the UI's input, and then bind it directly to the wireframe's Observable.
+
+### Story 3: Read Todos.
+
+An important thing to notice at this point is all the different ways a "Todo" is represented in the system, even in something as simple as this example program. 
+
+* There's the way the DataStore represents todos internally (in our case, as a plist structure and if we had used CoreData then as `NSManagedObject`s),
+* There's the way todos are represented internally by the interactors (and externally by the DataStore) as `Todo` structs.
+* There's the way todos are represented internally by presenters (and externally by interactors.) The list presenter uses `UpcomingItem`.
+* Lastly, theres the way todos are represented internally by view controllers (and externally by presenters.) The list view controller uses `UpcomingDisplaySection/UpcomingDisplayItem`
+
+Again we are struck with the difference in complexity between MVVM-C and VIPER; in the former there would only be three different representations of a todo rather than four. Maybe in a larger project it would make more sense; presumably we would find re-use opportunities that wouldn't otherwise exist?
+
+For this story, you will see that most of the changes/additions are dedicated to morphing the data in the stored plist into data the table view can understand over the four stages mentioned above. I also had to modify the AddWireframe so it could notify its parent about successful updates and pass that into the List presenter so it will know when to re-get the list of items.

@@ -12,11 +12,21 @@ import RxCocoa
 
 func displayList(on navigation: UINavigationController) {
 	let controller = navigation.topViewController as! ListViewController
-	_ = controller.installPresenter(presenter: listEventHandler())
+	let updated = PublishRelay<Date>()
+	_ = controller.installPresenter(presenter: listEventHandler(updated: updated.asObservable(), interactor: getTodos(dataStore: defaultDataStore)))
 		.bind(onNext: { [unowned controller] action in
 			switch action {
-			case .add:
-				displayAdd(on: controller)
+				case .add:
+					_ = displayAdd(on: controller)
+						.map { Date() }
+						.bind(to: updated)
+				case .error(let error):
+					displayErrorAlert(error: error, on: controller)
 			}
 		})
+}
+
+enum ListAction {
+	case add
+	case error(Error)
 }
