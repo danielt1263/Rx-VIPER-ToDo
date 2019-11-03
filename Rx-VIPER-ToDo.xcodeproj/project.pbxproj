@@ -645,7 +645,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 549CF6948559CA17EF97EEDC /* Pods-Rx-VIPER-ToDoTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XA4HQLH76F;
@@ -667,7 +666,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CDDEE3520DAA365E3A05D56 /* Pods-Rx-VIPER-ToDoTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XA4HQLH76F;

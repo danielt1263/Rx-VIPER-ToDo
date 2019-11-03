@@ -20,11 +20,11 @@ func listEventHandler(updated: Observable<Date>, interactor: @escaping ListInter
 			.map { upcomingItems in
 				return upcomingItems.reduce(into: [UpcomingDisplaySection]()) { result, item in
 					let displayItem = UpcomingDisplayItem(item)
-					if let index = result.firstIndex(where: { $0.model == item.dateRelation.section }) {
+                    if let index = result.firstIndex(where: { $0.model == Section(dateRelation: item.dateRelation) }) {
 						result[index].items.append(displayItem)
 					}
 					else {
-						result.append(UpcomingDisplaySection(model: item.dateRelation.section, items: [displayItem]))
+						result.append(UpcomingDisplaySection(model: Section(dateRelation: item.dateRelation), items: [displayItem]))
 					}
 				}
 			}
@@ -55,31 +55,38 @@ enum NearTermDateRelation {
 	case tomorrow
 	case laterThisWeek
 	case nextWeek
-
-	var section: Section {
-		switch self {
-			case .outOfRange:
-				return Section(name: "OUT OF RANGE", imageName: "paper")
-			case .today:
-				return Section(name: "TODAY", imageName: "check")
-			case .tomorrow:
-				return Section(name: "TOMORROW", imageName: "alarm")
-			case .laterThisWeek:
-				return Section(name: "THIS WEEK", imageName: "circle")
-			case .nextWeek:
-				return Section(name: "NEXT WEEK", imageName: "calendar")
-		}
-	}
 }
 
-extension UpcomingDisplayItem {
+private extension Section {
+    init(dateRelation: NearTermDateRelation) {
+        switch dateRelation {
+        case .outOfRange:
+            name = "OUT OF RANGE"
+            imageName = "paper"
+        case .today:
+            name = "TODAY"
+            imageName = "check"
+        case .tomorrow:
+            name = "TOMORROW"
+            imageName = "alarm"
+        case .laterThisWeek:
+            name = "THIS WEEK"
+            imageName = "circle"
+        case .nextWeek:
+            name = "NEXT WEEK"
+            imageName = "calendar"
+        }
+    }
+}
+
+private extension UpcomingDisplayItem {
 	init(_ item: UpcomingItem) {
 		title = item.title
 		dueDay = item.dateRelation == .today ? "" : dayFormatter.string(from: item.dueDate)
 	}
 }
 
-let dayFormatter: DateFormatter = {
+private let dayFormatter: DateFormatter = {
 	let result = DateFormatter()
 	result.dateFormat = DateFormatter.dateFormat(fromTemplate: "EEEE", options: 0, locale: nil)
 	return result

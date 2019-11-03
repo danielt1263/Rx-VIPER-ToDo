@@ -23,7 +23,7 @@ func getTodos(dataStore: DataStore) -> ListInteractor {
 	}
 }
 
-extension UpcomingItem {
+private extension UpcomingItem {
 	init(today: Date, todo: Todo) {
 		dateRelation = NearTermDateRelation(today: today, target: todo.date)
 		dueDate = todo.date
@@ -31,7 +31,7 @@ extension UpcomingItem {
 	}
 }
 
-extension NearTermDateRelation {
+private extension NearTermDateRelation {
 	init(today: Date, target: Date) {
 		let calendar = Calendar.current
 		let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!
