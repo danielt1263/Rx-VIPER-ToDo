@@ -30,7 +30,7 @@ final class ListViewController: UITableViewController, HasPresenter {
 	var buildOutput: (Input) -> Output = { _ in fatalError() }
 
 	private let disposeBag = DisposeBag()
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.dataSource = nil
@@ -75,7 +75,7 @@ struct Section: Equatable {
 	let imageName: String
 }
 
-struct UpcomingDisplayItem {
+struct UpcomingDisplayItem: Equatable {
 	let title: String
 	let dueDay: String
 }

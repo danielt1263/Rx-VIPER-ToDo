@@ -23,7 +23,7 @@ final class AddViewController: UIViewController, HasPresenter {
 		let minimumDate: Date
 		let saveEnabled: Observable<Bool>
 	}
-	
+
 	@IBOutlet weak var topConstraint: NSLayoutConstraint!
 	@IBOutlet weak var blurView: UIVisualEffectView!
 	@IBOutlet weak var dialogView: UIView!
@@ -36,8 +36,8 @@ final class AddViewController: UIViewController, HasPresenter {
 
 	private let disposeBag = DisposeBag()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
 		let input = Input(
 			title: nameField.rx.text.orEmpty.asObservable(),
@@ -56,5 +56,5 @@ final class AddViewController: UIViewController, HasPresenter {
 				nameField?.becomeFirstResponder()
 			})
 			.disposed(by: disposeBag)
-    }
+	}
 }

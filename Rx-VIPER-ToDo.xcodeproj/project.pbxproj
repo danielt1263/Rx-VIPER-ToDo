@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0933B6E0236F408D002580DF /* ListToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0933B6DF236F408D002580DF /* ListToDoTests.swift */; };
+		0933B6E2236F41EC002580DF /* CaseAccessible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0933B6E1236F41EC002580DF /* CaseAccessible.swift */; };
 		719B57BB236DD8C20008856C /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719B57BA236DD8C20008856C /* ListInteractor.swift */; };
 		7239881B2337097C0001602A /* ErrorAlertWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7239881A2337097C0001602A /* ErrorAlertWireframe.swift */; };
 		726641FC2331BB9900CC0BE1 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726641FB2331BB9900CC0BE1 /* Todo.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0933B6DF236F408D002580DF /* ListToDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListToDoTests.swift; sourceTree = "<group>"; };
+		0933B6E1236F41EC002580DF /* CaseAccessible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseAccessible.swift; sourceTree = "<group>"; };
 		15B0F74CA198EF968D9CD033 /* Pods-Rx-VIPER-ToDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rx-VIPER-ToDo.debug.xcconfig"; path = "Target Support Files/Pods-Rx-VIPER-ToDo/Pods-Rx-VIPER-ToDo.debug.xcconfig"; sourceTree = "<group>"; };
 		43FA46F73D5FB555A2F6807C /* Pods_Rx_VIPER_ToDoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rx_VIPER_ToDoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D2A62BC649F2E610843A369 /* Pods-Rx-VIPER-ToDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rx-VIPER-ToDo.release.xcconfig"; path = "Target Support Files/Pods-Rx-VIPER-ToDo/Pods-Rx-VIPER-ToDo.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				72774228232D740C0051E070 /* AddToDoTests.swift */,
+				0933B6DF236F408D002580DF /* ListToDoTests.swift */,
 				72E136E2232B219300A2DE8C /* Info.plist */,
 			);
 			path = "Rx-VIPER-ToDoTests";
@@ -181,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				72E136F4232B350300A2DE8C /* HasPresenter.swift */,
+				0933B6E1236F41EC002580DF /* CaseAccessible.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -435,6 +441,7 @@
 				7239881B2337097C0001602A /* ErrorAlertWireframe.swift in Sources */,
 				72F7B649232E6ED600B59FFB /* Identifier.swift in Sources */,
 				719B57BB236DD8C20008856C /* ListInteractor.swift in Sources */,
+				0933B6E2236F41EC002580DF /* CaseAccessible.swift in Sources */,
 				7290A7B7232C6CB7002487E2 /* AddViewController.swift in Sources */,
 				7290A7B9232C96ED002487E2 /* AddTransitioning.swift in Sources */,
 				72E136F8232B37B200A2DE8C /* AddWireframe.swift in Sources */,
@@ -452,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				72774229232D740C0051E070 /* AddToDoTests.swift in Sources */,
+				0933B6E0236F408D002580DF /* ListToDoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

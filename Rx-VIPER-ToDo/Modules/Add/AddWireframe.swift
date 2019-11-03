@@ -19,7 +19,7 @@ func displayAdd(on parent: UIViewController) -> Observable<Void> {
 		minimumDate: Date(),
 		addInteractor: saveTodo(dataStore: defaultDataStore)
 	))
-	.share()
+		.share()
 
 	_ = action
 		.bind(onNext: { [unowned parent, unowned controller] action in
@@ -31,18 +31,13 @@ func displayAdd(on parent: UIViewController) -> Observable<Void> {
 			}
 		})
 	parent.present(controller, animated: true, completion: nil)
-	return action.filter { $0.isSuccess }.map { _ in }
+	return action.filter { $0.matches(case: .success) }.map { _ in }
 }
 
 let transitioningDelegate = AddTransitioningDelegate()
 
-enum AddAction {
+enum AddAction: CaseAccessible {
 	case success
 	case cancel
 	case failure(Error)
-
-	var isSuccess: Bool {
-		if case .success = self { return true }
-		else { return false }
-	}
 }

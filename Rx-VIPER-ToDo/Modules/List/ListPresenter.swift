@@ -20,21 +20,21 @@ func listEventHandler(updated: Observable<Date>, interactor: @escaping ListInter
 			.map { upcomingItems in
 				return upcomingItems.reduce(into: [UpcomingDisplaySection]()) { result, item in
 					let displayItem = UpcomingDisplayItem(item)
-                    if let index = result.firstIndex(where: { $0.model == Section(dateRelation: item.dateRelation) }) {
+					if let index = result.firstIndex(where: { $0.model == Section(dateRelation: item.dateRelation) }) {
 						result[index].items.append(displayItem)
 					}
 					else {
 						result.append(UpcomingDisplaySection(model: Section(dateRelation: item.dateRelation), items: [displayItem]))
 					}
 				}
-			}
+		}
 
 		return (
 			ListViewController.Output(
 				isRefreshing: upcomingItemsResult.map { _ in false },
 				displaySections: displaySections,
 				backgroundViewHidden: displaySections.map { !$0.isEmpty }
-				),
+			),
 			.merge(
 				input.add.map { ListAction.add },
 				upcomingItemsResult.compactMap { $0.error }.map { ListAction.error($0) }
@@ -43,13 +43,13 @@ func listEventHandler(updated: Observable<Date>, interactor: @escaping ListInter
 	}
 }
 
-struct UpcomingItem {
+struct UpcomingItem: Equatable {
 	let dateRelation: NearTermDateRelation
 	let dueDate: Date
 	let title: String
 }
 
-enum NearTermDateRelation {
+enum NearTermDateRelation: Equatable {
 	case outOfRange
 	case today
 	case tomorrow
@@ -58,25 +58,25 @@ enum NearTermDateRelation {
 }
 
 private extension Section {
-    init(dateRelation: NearTermDateRelation) {
-        switch dateRelation {
-        case .outOfRange:
-            name = "OUT OF RANGE"
-            imageName = "paper"
-        case .today:
-            name = "TODAY"
-            imageName = "check"
-        case .tomorrow:
-            name = "TOMORROW"
-            imageName = "alarm"
-        case .laterThisWeek:
-            name = "THIS WEEK"
-            imageName = "circle"
-        case .nextWeek:
-            name = "NEXT WEEK"
-            imageName = "calendar"
-        }
-    }
+	init(dateRelation: NearTermDateRelation) {
+		switch dateRelation {
+		case .outOfRange:
+			name = "OUT OF RANGE"
+			imageName = "paper"
+		case .today:
+			name = "TODAY"
+			imageName = "check"
+		case .tomorrow:
+			name = "TOMORROW"
+			imageName = "alarm"
+		case .laterThisWeek:
+			name = "THIS WEEK"
+			imageName = "circle"
+		case .nextWeek:
+			name = "NEXT WEEK"
+			imageName = "calendar"
+		}
+	}
 }
 
 private extension UpcomingDisplayItem {

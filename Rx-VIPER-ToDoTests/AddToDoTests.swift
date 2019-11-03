@@ -15,15 +15,17 @@ class AddToDoTests: XCTestCase {
 
 	func test_TapAddButton() {
 		let scheduler = TestScheduler(initialClock: 0)
-		let addTrigger = scheduler.createColdObservable([.next(10, ()), .completed(30)])
+		let addTrigger = scheduler.createColdObservable([.next(10, ())])
 		let input = ListViewController.Input(
-			add: addTrigger.asObservable()
+			add: addTrigger.asObservable(),
+			refresh: .never()
 		)
 		let result = scheduler.start {
-			return listEventHandler()(input).1
+			return listEventHandler(updated: .never(), interactor: { _ in .never() })(input).1
+				.map { $0.matches(case: .add) }
 		}
 
-		XCTAssertEqual(result.events, [.next(210, .add), .completed(230)])
+		XCTAssertEqual(result.events, [.next(210, true)])
 	}
 
 	func test_EnterTitleAndDate() {
@@ -37,7 +39,8 @@ class AddToDoTests: XCTestCase {
 		let input = AddViewController.Input(
 			title: title.asObservable(),
 			date: date.asObservable(),
-			save: .never()
+			save: .never(),
+			cancel: .never()
 		)
 		let result = scheduler.start {
 			return addEventHandler(minimumDate: now, addInteractor: interactor)(input).0.saveEnabled
@@ -56,12 +59,12 @@ class AddToDoTests: XCTestCase {
 		let now = Date()
 		let result = scheduler.start {
 			saveTodo(dataStore: dataStore)("A Title", now)
-				.map { $0.map { true } }
+				.map { true }
 		}
 
 		XCTAssertEqual(todoResult?.title, "A Title")
 		XCTAssertEqual(todoResult?.date, Calendar.current.startOfDay(for: now))
-		XCTAssertEqual(result.events, [.next(200, .next(true)), .next(200, .completed), .completed(200)])
+		XCTAssertEqual(result.events, [.next(200, true), .completed(200)])
 	}
 
 	func test_AddInteractor_save_failure() {
@@ -72,10 +75,10 @@ class AddToDoTests: XCTestCase {
 		let now = Date()
 		let result = scheduler.start {
 			saveTodo(dataStore: dataStore)("A Title", now)
-				.map { $0.map { true } }
+				.map { true }
 		}
 
-		XCTAssertEqual(result.events, [.next(200, .error(SaveError())), .completed(200)])
+		XCTAssertEqual(result.events, [.error(200, SaveError())])
 	}
 
 	func test_TapSaveButton() {
@@ -89,25 +92,19 @@ class AddToDoTests: XCTestCase {
 		let input = AddViewController.Input(
 			title: title.asObservable(),
 			date: date.asObservable(),
-			save: save.asObservable()
+			save: save.asObservable(),
+			cancel: .never()
 		)
 		let result = scheduler.start {
 			return addEventHandler(minimumDate: now, addInteractor: interactor)(input).1
-				.map { $0.isSuccess }
+				.map { $0.matches(case: .success) }
 		}
 
-		XCTAssertEqual(result.events, [.next(230, true), .completed(300)])
+		XCTAssertEqual(result.events, [.next(230, true)])
 	}
 }
 
-struct SaveError: Error, Equatable { }
-
-private extension AddAction {
-	var isSuccess: Bool {
-		if case .success = self { return true }
-		else { return false }
-	}
-}
+private struct SaveError: Error, Equatable { }
 
 private class TestDataStore: DataStore {
 	init(_ create: @escaping (Todo) -> Observable<Void>) {

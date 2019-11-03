@@ -16,17 +16,17 @@ func displayList(on navigation: UINavigationController) {
 	_ = controller.installPresenter(presenter: listEventHandler(updated: updated.asObservable(), interactor: getTodos(dataStore: defaultDataStore)))
 		.bind(onNext: { [unowned controller] action in
 			switch action {
-				case .add:
-					_ = displayAdd(on: controller)
-						.map { Date() }
-						.bind(to: updated)
-				case .error(let error):
-					displayErrorAlert(error: error, on: controller)
+			case .add:
+				_ = displayAdd(on: controller)
+					.map { Date() }
+					.bind(to: updated)
+			case .error(let error):
+				displayErrorAlert(error: error, on: controller)
 			}
 		})
 }
 
-enum ListAction {
+enum ListAction: CaseAccessible {
 	case add
 	case error(Error)
 }
